@@ -1,18 +1,3 @@
-# # replace explicit x, y position data with a vector
-# # camera system
-# # add coloring support, will need graphic lists support
-# # make shape a sophisticated class, follows renderer
-# # a way to identify entities, id | name
-# # layers support
-
-# Today's TODO:
-#	[-] make it a package
-#	[/] seperate most of curses form the engine 
-#	> put dependency in the Renderer and Input and a TimingSystem
-#	[-] support of Vec2D in the whole engine
-#	[ ] build a game
-#	[ ] upload to github
-
 import time
 import curses
 
