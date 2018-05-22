@@ -1,7 +1,7 @@
 from xudia.system import System
 import time
 
-class CursesTickProvider(System):
+class TickProvider(System):
 	def __init(self):
 		self.fps = 0
 		self.update = update_placeholder

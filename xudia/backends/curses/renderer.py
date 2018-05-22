@@ -4,7 +4,7 @@ from xudia.utils import Vec2D
 
 from xudia import Xudia
 
-class CursesRenderer(System):
+class Renderer(System):
 	def begin(self):
 		self.screen = Xudia.screen
 		self.scene = Xudia.scene

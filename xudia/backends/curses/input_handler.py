@@ -2,7 +2,7 @@ from xudia.system import System
 
 from xudia import Xudia
 
-class CursesInputHandler(System):
+class InputHandler(System):
 	def __init__(self):
 		self.events = dict()
 		self.add_on_next_update = []
