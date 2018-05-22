@@ -4,13 +4,13 @@ class Xudia:
 		Xudia.scene = scene
 		
 		if default_systems:
-			from .curses_systems.curses_tick_provider import CursesTickProvider
-			from .curses_systems.curses_renderer import CursesRenderer
-			from .curses_systems.curses_input_handler import CursesInputHandler
+			from .backends.curses.tick_provider import TickProvider
+			from .backends.curses.renderer import Renderer
+			from .backends.curses.input_handler import InputHandler
 
-			Xudia.tickProvider = CursesTickProvider()
-			Xudia.input = CursesInputHandler()
-			Xudia.renderer = CursesRenderer()
+			Xudia.tickProvider = TickProvider()
+			Xudia.input = InputHandler()
+			Xudia.renderer = Renderer()
 
 		Xudia.engine.init_systems()
 		Xudia.tickProvider.setFPS(fps)

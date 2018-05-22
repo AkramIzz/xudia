@@ -1,4 +1,4 @@
-from ..system import System
+from xudia.system import System
 import time
 
 class CursesTickProvider(System):

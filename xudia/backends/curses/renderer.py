@@ -1,6 +1,6 @@
 import curses
-from ..system import System
-from ..utils import Vec2D
+from xudia.system import System
+from xudia.utils import Vec2D
 
 from xudia import Xudia
 
