@@ -1,5 +1,6 @@
-from xudia.system import System
+import curses
 
+from xudia.system import System
 from xudia import Xudia
 
 class InputHandler(System):
@@ -24,9 +25,18 @@ class InputHandler(System):
 		for key, callback in zip(keys, callbacks):
 			self.addListener(key, callback)
 
-	def begin(self):
-		self.screen = Xudia.screen
+	def on_screen_created(self):
+		curses.noecho()
+		curses.cbreak()
+		self.screen = Xudia.renderer.screen
+		self.screen.keypad(1)
 		self.screen.nodelay(True)
+
+	def on_screen_ending(self):
+		self.screen.keypad(0)
+		curses.nocbreak()
+		curses.echo()
+		self.screen = None
 
 	def update(self):
 		self.addWaitingListeners()

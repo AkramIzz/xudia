@@ -1,21 +1,28 @@
 import curses
+
 from xudia.system import System
 from xudia.utils import Vec2D
-
 from xudia import Xudia
 
 class Renderer(System):
 	def begin(self):
-		self.screen = Xudia.screen
 		self.scene = Xudia.scene
-		self.init_curses()
-		self.update_dims()
+		self.screen = curses.initscr()
+		Xudia.input.on_screen_created()
 
-	def init_curses(self):
-		curses.noecho()
 		curses.curs_set(False)
-		curses.cbreak()
+		try:
+			curses.start_color()
+		except:
+			pass
+			
+		self.update_dims()
 	
+	def end(self):
+		Xudia.input.on_screen_ending()
+		curses.endwin()
+		self.screen = None
+
 	def update(self):
 		graphics = self.scene.render()
 		self.screen.clear()

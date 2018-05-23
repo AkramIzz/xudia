@@ -1,5 +1,4 @@
 import time
-import curses
 
 from xudia import Xudia
 
@@ -23,18 +22,24 @@ class Engine:
 		self.systems.remove(system)
 
 	def start(self):
-		curses.wrapper(self.game_loop)
-		
-	def game_loop(self, screen):
 		self.running = True
-		Xudia.screen = screen
 
-		self.input.begin()
-		self.renderer.begin()
-		self.tickProvider.begin()
-		for sys in self.systems:
-			sys.begin()
+		try:
+			self.input.begin()
+			self.renderer.begin()
+			self.tickProvider.begin()
+			for sys in self.systems:
+				sys.begin()
 
+			self.game_loop()
+		finally:
+			self.input.end()
+			self.renderer.end()
+			self.tickProvider.end()
+			for sys in self.systems:
+				sys.end()
+
+	def game_loop(self):
 		while self.running:
 			self.input.update()
 			for sys in self.systems:

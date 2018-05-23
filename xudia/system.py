@@ -5,5 +5,8 @@ class System:
 	def begin(self):
 		pass
 
+	def end(self):
+		pass
+
 	def update(self):
 		raise NotImplementedError()
