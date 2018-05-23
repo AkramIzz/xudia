@@ -12,22 +12,26 @@ Xudia is an entity-based game engine. The engine is responsible for the systems 
 2. A Renderer
 3. A TickProvider
 
-You can change default systems in `xudia.Xudia` class located in the `__init__.py` file
+You can change the systems used in the engine by creating a module or a class that defines three functions that return an instance of each system
 
 ```python
-from xudia import Xudia
-# change default systems
-Xudia.input = MyInputHandler()
-Xudia.renderer = MyRenderer()
-Xudia.tickProvider = MyTickProvider()
+class MyBackend:
+    def get_input_handler():
+        return MyInputHandler()
+    def get_renderer():
+        return MyRenderer()
+    def get_tick_provider():
+        return MyTickProvider()
 
+from xudia import Xudia
 # create the engine
 engine = Engine()
 scene = MyScene()
 # initialize Xudia with a scene and the engine
-# set default_systems to False 
-#   if you wish to use the systems we provided earlier
-Xudia.init(scene, engine, default_systems=False)
+# set backend to your module or class that provide 
+#   the previously defined functions: get_input_handler, get_renderer,
+#   get_tick_provider
+Xudia.init(scene, engine, backend=MyBackend)
 
 # start the engine: update loop
 engine.start()
