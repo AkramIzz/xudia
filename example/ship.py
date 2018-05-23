@@ -48,6 +48,8 @@ class Ship(Entity):
 			b = Bullet(self.pos.x+4, self.pos.y+1, Vec2D(self.direction, 0))
 		elif self.direction == -1:
 			b = Bullet(self.pos.x-1, self.pos.y+1, Vec2D(self.direction, 0))
+		else:
+			return
 		Xudia.scene.addEntity(b)
 
 	def steer(self, direction):
