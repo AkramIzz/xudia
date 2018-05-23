@@ -16,7 +16,7 @@ class FPS(Entity):
 
 	def update_display(self):
 		engine = Xudia.engine
-		self.setShape('FPS: ' 
+		self.set_shape('FPS: ' 
 			+ str(int(1/Xudia.tickProvider.elapsed)).ljust(3) 
 			+ '  Entities:' + str(len(Xudia.scene.entities))
 			+ '  ' + str(Xudia.renderer.width) + 'x' + str(Xudia.renderer.height))

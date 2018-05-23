@@ -1,6 +1,6 @@
 from .utils import Vec2D
 
-def getSize(shape):
+def get_size(shape):
 	size = Vec2D(0, 0)
 	size.y = len(shape.split('\n'))
 	size.x = len(shape.split('\n')[0])
@@ -10,12 +10,12 @@ class Entity:
 	def __init__(self, pos_vector, shape):
 		self.pos = pos_vector
 		self.shape = shape
-		self.size = getSize(shape)
+		self.size = get_size(shape)
 
-	def moveTo(self, pos_vector):
+	def move_to(self, pos_vector):
 		self.pos = pos_vector
 
-	def moveBy(self, delta_vector):
+	def move_by(self, delta_vector):
 		self.pos += delta_vector
 
 	def position(self):
@@ -27,6 +27,6 @@ class Entity:
 	def render(self):
 		return self.shape
 
-	def setShape(self, shape):
+	def set_shape(self, shape):
 		self.shape = shape
-		self.size = getSize(shape)
+		self.size = get_size(shape)

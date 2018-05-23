@@ -9,11 +9,11 @@ class Bullet(Entity):
 		self.velocity = velocity
 		self.life = 60
 
-	def getSpeed(self):
+	def get_speed(self):
 		return self.velocity
 
 	def update(self):
 		self.life -= 1
 		if self.life < 1:
-			Xudia.scene.removeEntity(self)
-		self.moveBy(self.velocity)
+			Xudia.scene.remove_entity(self)
+		self.move_by(self.velocity)

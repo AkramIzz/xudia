@@ -39,14 +39,14 @@ class Renderer(System):
 	def draw(self, graphic, pos, size):
 		pos = Vec2D(int(pos.x), int(pos.y))
 		size = Vec2D(int(size.x), int(size.y))
-		graphic, pos, size = self.getVisible(graphic, pos, size)
+		graphic, pos, size = self.get_visible(graphic, pos, size)
 		try:
 			for i, l in enumerate(graphic):
 				self.screen.addstr(pos.y + i, pos.x, l)
 		except curses.error:
 			pass
 				
-	def getVisible(self, graphic, pos, size):
+	def get_visible(self, graphic, pos, size):
 		# the whole graphic isn't visible
 		if pos.y >= curses.LINES or pos.x >= curses.COLS:
 			return [], pos, Vec2D(0, 0)

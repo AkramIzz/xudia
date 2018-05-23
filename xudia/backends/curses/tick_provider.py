@@ -10,7 +10,7 @@ class TickProvider(System):
 		self.frame_begin = time.time()
 		self.elapsed = 0
 
-	def setFPS(self, fps):
+	def set_fps(self, fps):
 		self.fps = fps
 		if fps > 0:
 			self.update = self.update_fixed_fps

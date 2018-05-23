@@ -4,13 +4,13 @@ class Scene(System):
 	def __init__(self):
 		self.entities = []
 
-	def addEntity(self, e):
+	def add_entity(self, e):
 		self.entities.append(e)
 
-	def removeEntity(self, e):
+	def remove_entity(self, e):
 		self.entities.remove(e)
 
-	def removeAllEntities(self, e):
+	def remove_all_entities(self, e):
 		self.entities = []
 
 	def update(self):

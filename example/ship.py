@@ -15,15 +15,15 @@ class Ship(Entity):
 		self.direction = Vec2D(0, 0)
 		self.speed = 1
 
-	def init_input(self, inputHandler):
-		inputHandler.addListener('KEY_UP', self.onkeyup)
-		inputHandler.addListener('KEY_RIGHT', self.onkeyright)
-		inputHandler.addListener('KEY_DOWN', self.onkeydown)
-		inputHandler.addListener('KEY_LEFT', self.onkeyleft)
-		inputHandler.addListener(' ', self.onfire)
+	def init_input(self, input_handler):
+		input_handler.add_listener('KEY_UP', self.onkeyup)
+		input_handler.add_listener('KEY_RIGHT', self.onkeyright)
+		input_handler.add_listener('KEY_DOWN', self.onkeydown)
+		input_handler.add_listener('KEY_LEFT', self.onkeyleft)
+		input_handler.add_listener(' ', self.onfire)
 	
 	def update(self):
-		self.moveBy(self.velocity)
+		self.move_by(self.velocity)
 		self.velocity = Vec2D(0, 0)
 
 	def onkeyup(self):
@@ -50,12 +50,12 @@ class Ship(Entity):
 			b = Bullet(self.pos.x-1, self.pos.y+1, Vec2D(self.direction, 0))
 		else:
 			return
-		Xudia.scene.addEntity(b)
+		Xudia.scene.add_entity(b)
 
 	def steer(self, direction):
 		if direction == 1:
-			self.setShape('==>>\n===|\n==>>')
+			self.set_shape('==>>\n===|\n==>>')
 			self.direction = 1
 		elif direction == -1:
-			self.setShape('<<==\n|===\n<<==')
+			self.set_shape('<<==\n|===\n<<==')
 			self.direction = -1

@@ -8,12 +8,12 @@ class InputHandler(System):
 		self.events = dict()
 		self.add_on_next_update = []
 
-	def addListener(self, key, callback):
+	def add_listener(self, key, callback):
 		# DANGER:
 		# adding a listener on the same frame may cause an infinite loop
 		self.add_on_next_update.append((key, callback))
 
-	def addWaitingListeners(self):
+	def add_waiting_listeners(self):
 		for key, callback in self.add_on_next_update:
 			if self.events.get(key):
 				self.events[key].append(callback)
@@ -21,9 +21,9 @@ class InputHandler(System):
 				self.events[key] = [callback]
 		self.add_on_next_update = []
 
-	def addListeners(self, keys, callbacks):
+	def add_listeners(self, keys, callbacks):
 		for key, callback in zip(keys, callbacks):
-			self.addListener(key, callback)
+			self.add_listener(key, callback)
 
 	def on_screen_created(self):
 		curses.noecho()
@@ -39,7 +39,7 @@ class InputHandler(System):
 		self.screen = None
 
 	def update(self):
-		self.addWaitingListeners()
+		self.add_waiting_listeners()
 		try:
 			k = self.screen.getkey()
 		except:

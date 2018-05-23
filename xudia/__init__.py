@@ -11,4 +11,4 @@ class Xudia:
 		Xudia.renderer = backend.get_renderer()
 
 		Xudia.engine.init_systems()
-		Xudia.tickProvider.setFPS(fps)
+		Xudia.tickProvider.set_fps(fps)
