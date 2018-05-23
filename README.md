@@ -31,7 +31,7 @@ scene = MyScene()
 # set backend to your module or class that provide 
 #   the previously defined functions: get_input_handler, get_renderer,
 #   get_tick_provider
-Xudia.init(scene, engine, backend=MyBackend)
+Xudia.init(engine, scene, backend=MyBackend)
 
 # start the engine: update loop
 engine.start()
