@@ -9,6 +9,7 @@ class Xudia:
 		Xudia.tickProvider = backend.get_tick_provider()
 		Xudia.input = backend.get_input_handler()
 		Xudia.renderer = backend.get_renderer()
+		Xudia.Graphic = backend.get_graphic_class()
 
 		Xudia.engine.init_systems()
 		Xudia.tickProvider.set_fps(fps)

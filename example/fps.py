@@ -5,7 +5,7 @@ from xudia.utils import Vec2D
 
 class FPS(Entity):
 	def __init__(self, x=0, y=0):
-		super().__init__(Vec2D(x, y), shape='')
+		super().__init__(Vec2D(x, y), Xudia.Graphic(''))
 		self.lastCall = 0
 
 	def update(self):
@@ -16,7 +16,7 @@ class FPS(Entity):
 
 	def update_display(self):
 		engine = Xudia.engine
-		self.set_shape('FPS: ' 
+		self.graphic.set_shape('FPS: ' 
 			+ str(int(1/Xudia.tickProvider.elapsed)).ljust(3) 
 			+ '  Entities:' + str(len(Xudia.scene.entities))
 			+ '  ' + str(Xudia.renderer.width) + 'x' + str(Xudia.renderer.height))

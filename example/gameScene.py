@@ -10,6 +10,3 @@ class GameScene(Scene):
 		self.add_entity(Ship(Xudia.renderer.width/2, Xudia.renderer.height/2))
 		self.add_entity(FPS())
 		Xudia.input.add_listener('q', Xudia.engine.stop)
-
-	def render(self):
-		return self.entities

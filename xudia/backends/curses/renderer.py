@@ -16,7 +16,7 @@ class Renderer(System):
 		except:
 			pass
 			
-		self.update_dims()
+		self.update_dimensions()
 	
 	def end(self):
 		Xudia.input.on_screen_ending()
@@ -24,29 +24,30 @@ class Renderer(System):
 		self.screen = None
 
 	def update(self):
-		graphics = self.scene.render()
+		entities = self.scene.entities
+		
 		self.screen.clear()
 		curses.update_lines_cols()
-		self.update_dims()
-		for g in graphics:
-			self.draw(g.render().split('\n'), g.position(), g.size)
+		self.update_dimensions()
+		for e in entities:
+			self.draw(e.graphic.render(), e.position, e.graphic.size)
 		self.screen.refresh()
 
-	def update_dims(self):
+	def update_dimensions(self):
 		self.width = curses.COLS
 		self.height = curses.LINES
 
 	def draw(self, graphic, pos, size):
 		pos = Vec2D(int(pos.x), int(pos.y))
 		size = Vec2D(int(size.x), int(size.y))
-		graphic, pos, size = self.get_visible(graphic, pos, size)
+		graphic, pos, size = Renderer.get_visible(graphic, pos, size)
 		try:
 			for i, l in enumerate(graphic):
 				self.screen.addstr(pos.y + i, pos.x, l)
 		except curses.error:
 			pass
 				
-	def get_visible(self, graphic, pos, size):
+	def get_visible(graphic, pos, size):
 		# the whole graphic isn't visible
 		if pos.y >= curses.LINES or pos.x >= curses.COLS:
 			return [], pos, Vec2D(0, 0)

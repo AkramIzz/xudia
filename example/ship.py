@@ -8,7 +8,7 @@ from bullet import Bullet
 
 class Ship(Entity):
 	def __init__(self, x, y):
-		shape = '+'
+		shape = Xudia.Graphic('+')
 		super().__init__(Vec2D(x, y), shape)
 		self.init_input(Xudia.input)
 		self.velocity = Vec2D(0, 0)
@@ -45,17 +45,17 @@ class Ship(Entity):
 	def onfire(self):
 		b = None
 		if self.direction == 1:
-			b = Bullet(self.pos.x+4, self.pos.y+1, Vec2D(self.direction, 0))
+			b = Bullet(self.position.x+4, self.position.y+1, Vec2D(self.direction, 0))
 		elif self.direction == -1:
-			b = Bullet(self.pos.x-1, self.pos.y+1, Vec2D(self.direction, 0))
+			b = Bullet(self.position.x-1, self.position.y+1, Vec2D(self.direction, 0))
 		else:
 			return
 		Xudia.scene.add_entity(b)
 
 	def steer(self, direction):
 		if direction == 1:
-			self.set_shape('==>>\n===|\n==>>')
+			self.graphic.set_shape('==>>\n===|\n==>>')
 			self.direction = 1
 		elif direction == -1:
-			self.set_shape('<<==\n|===\n<<==')
+			self.graphic.set_shape('<<==\n|===\n<<==')
 			self.direction = -1

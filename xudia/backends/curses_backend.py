@@ -9,3 +9,7 @@ def get_renderer():
 def get_input_handler():
 	from .curses.input_handler import InputHandler
 	return InputHandler()
+
+def get_graphic_class():
+	from .curses.graphic import Graphic
+	return Graphic
