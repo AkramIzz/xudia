@@ -8,7 +8,11 @@ class Scene(System):
 		self.entities.append(e)
 
 	def remove_entity(self, e):
-		self.entities.remove(e)
+		try:
+			self.entities.remove(e)
+			return True
+		except:
+			return False
 
 	def remove_all_entities(self, e):
 		self.entities = []
