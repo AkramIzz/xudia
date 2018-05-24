@@ -1,15 +1,15 @@
 from xudia import Xudia
 from xudia.entity import Entity
+from xudia.systems.hitbox import Hitbox
 from xudia.utils import Vec2D
-
-import curses
 
 from bullet import Bullet
 
 class Ship(Entity):
 	def __init__(self, x, y):
 		shape = Xudia.Graphic('+')
-		super().__init__(Vec2D(x, y), shape)
+		hitbox = Hitbox(self, 4, 3)
+		super().__init__(Vec2D(x, y), shape, hitbox)
 		self.init_input(Xudia.input)
 		self.velocity = Vec2D(0, 0)
 		self.direction = Vec2D(0, 0)
@@ -51,6 +51,7 @@ class Ship(Entity):
 		else:
 			return
 		Xudia.scene.add_entity(b)
+		Xudia.collision.add_collidable(b, Xudia.scene.enemy, lambda : Xudia.scene.remove_entity(Xudia.scene.enemy))
 
 	def steer(self, direction):
 		if direction == 1:

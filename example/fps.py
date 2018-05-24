@@ -5,7 +5,7 @@ from xudia.utils import Vec2D
 
 class FPS(Entity):
 	def __init__(self, x=0, y=0):
-		super().__init__(Vec2D(x, y), Xudia.Graphic(''))
+		super().__init__(Vec2D(x, y), Xudia.Graphic(''), None)
 		self.lastCall = 0
 
 	def update(self):
