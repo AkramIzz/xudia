@@ -8,7 +8,7 @@ Just download and copy the xudia folder into your game's folder and you'r done.
 # Usage
 Xudia is an entity-based game engine. The engine is responsible for the systems update cycle, currently there's three main systems added by default to the engine:
 
-1. A InputHandler
+1. An InputHandler
 2. A Renderer
 3. A TickProvider
 
