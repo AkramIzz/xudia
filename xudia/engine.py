@@ -16,7 +16,7 @@ class Engine:
 	def add_system(self, system):
 		if self.running:
 			system.begin()
-		self.systems.appendleft(system)
+		self.systems.insert(0, system)
 
 	def remove_system(self, system):
 		self.systems.remove(system)
